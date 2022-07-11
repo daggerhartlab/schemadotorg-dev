@@ -1,0 +1,32 @@
+name: schema
+recipe: drupal9
+config:
+  webroot: ./web
+  composer_version: '2'
+  php: '8.0'
+  via: apache
+  database: mysql
+  xdebug: "debug,develop"
+
+env_file:
+  - .lando.env
+
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+
+  mailhog:
+    type: mailhog:v1.0.0
+    portforward: true
+    hogfrom:
+      - appserver
+
+tooling:
+
+  reinstall:
+    service: appserver
+    cmd:
+      - drush site-install standard --account-mail="j@d.com" --account-name=admin --account-pass=pass --site-mail="j@d.com" --site-name=schema --yes
+      - drush en schemadotorg_standard -y
