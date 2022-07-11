@@ -25,7 +25,7 @@ services:
 
 tooling:
 
-  reinstall:
+  drupal-install-standard:
     service: appserver
     cmd:
       - drush site-install standard --account-mail="j@d.com" --account-name=admin --account-pass=pass --site-mail="j@d.com" --site-name=schema --yes
