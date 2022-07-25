@@ -12,6 +12,10 @@ env_file:
   - .lando.env
 
 services:
+  appserver:
+    overrides:
+      environment:
+        DRUSH_OPTIONS_URI: "https://schema.lndo.site"
   pma:
     type: phpmyadmin
     hosts:
@@ -29,4 +33,4 @@ tooling:
     service: appserver
     cmd:
       - drush site-install standard --account-mail="j@d.com" --account-name=admin --account-pass=pass --site-mail="j@d.com" --site-name=schema --yes
-      - drush en schemadotorg_standard -y
+#      - drush en schemadotorg_standard -y

@@ -1,3 +1,4 @@
+Notes.md
 # Ignore composer.lock because generally I always want to be working with
 # the most recent versions of packages.
 composer.lock
